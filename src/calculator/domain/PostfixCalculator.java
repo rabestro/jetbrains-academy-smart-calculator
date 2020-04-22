@@ -90,7 +90,7 @@ public class PostfixCalculator implements Calculator {
         final var stack = new ArrayDeque<String>();
 
         for (var element : infix) {
-            final var isOperand = !element.matches("[-+/*^()]");
+            final var isOperand = !element.matches("[-+/%*^()]");
 
             if (isOperand) {
                 postfix.add(element);

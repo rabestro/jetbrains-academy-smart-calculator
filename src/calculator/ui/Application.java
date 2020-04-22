@@ -6,6 +6,8 @@ import calculator.validation.Validation;
 
 import java.util.Scanner;
 
+import static java.lang.String.join;
+
 public class Application {
     private static final String ACTION_EXIT = "/exit";
     private static final String ACTION_HELP = "/help";
@@ -49,7 +51,14 @@ public class Application {
     }
 
     void printHelp() {
-        System.out.println("The program calculates the sum and difference of numbers.");
+        System.out.println(join("\n",
+                "The program calculates the arithmetic expressions for big numbers.",
+                "The program support variables assigment and use.",
+                "Supported operations: + - * / % ^",
+                "Supported commands:",
+                "/help - shows this help",
+                "/exit - exit the program."
+        ));
     }
 }
 
