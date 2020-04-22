@@ -1,18 +1,22 @@
-package calculator;
+package calculator.ui;
+
+import calculator.domain.Calculator;
+import calculator.domain.PostfixCalculator;
+import calculator.validation.Validation;
 
 import java.util.Scanner;
 
-class Application {
+public class Application {
     private static final String ACTION_EXIT = "/exit";
     private static final String ACTION_HELP = "/help";
 
     private final Calculator calculator;
 
-    Application() {
+    public Application() {
         calculator = new PostfixCalculator();
     }
 
-    void menu() {
+    public void menu() {
         final var sc = new Scanner(System.in);
 
         while (true) {

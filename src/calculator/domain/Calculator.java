@@ -1,10 +1,10 @@
-package calculator;
+package calculator.domain;
 
 import java.math.BigInteger;
 import java.util.regex.Pattern;
 
 public interface Calculator {
-    Pattern OPERATOR = Pattern.compile("[-+*/]");
+    Pattern OPERATOR = Pattern.compile("[-+*/^]");
     String  LEFT_PARENTHESIS = "(";
     String  RIGHT_PARENTHESIS = ")";
 

@@ -1,4 +1,4 @@
-package calculator;
+package calculator.validation;
 
 import java.math.BigInteger;
 import java.util.Map;
@@ -7,7 +7,7 @@ import java.util.Set;
 public class ExpressionValidation implements Validation {
     final private Map<String, BigInteger> variables;
 
-    ExpressionValidation(Map<String, BigInteger> variables) {
+    public ExpressionValidation(Map<String, BigInteger> variables) {
         this.variables = variables;
     }
 

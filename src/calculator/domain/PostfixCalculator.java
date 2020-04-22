@@ -1,7 +1,12 @@
-package calculator;
+package calculator.domain;
+
+import calculator.validation.ExpressionValidation;
+import calculator.validation.Validation;
 
 import java.math.BigInteger;
 import java.util.*;
+
+import static calculator.domain.Operations.getOperation;
 
 public class PostfixCalculator implements Calculator {
     private static final String TOKENS =
@@ -20,7 +25,8 @@ public class PostfixCalculator implements Calculator {
     @Override
     public boolean setExpression(final String expression) {
 
-        final var isCorrectExpression = validation.checkExpression(expression)
+        final var isCorrectExpression =
+                validation.checkExpression(expression)
                 && validation.checkParentheses(expression)
                 && validation.checkVariables(expression);
 
@@ -40,20 +46,7 @@ public class PostfixCalculator implements Calculator {
             if (isOperator) {
                 var b = stack.pop();
                 var a = stack.pop();
-                switch (element) {
-                    case "+":
-                        stack.push(a.add(b));
-                        continue;
-                    case "-":
-                        stack.push(a.subtract(b));
-                        continue;
-                    case "*":
-                        stack.push(a.multiply(b));
-                        continue;
-                    case "/":
-                        stack.push(a.divide(b));
-                        continue;
-                }
+                stack.push(getOperation(element).calculate(a, b));
             } else {
                 stack.push(parseOperand(element));
             }
@@ -97,7 +90,7 @@ public class PostfixCalculator implements Calculator {
         final var stack = new ArrayDeque<String>();
 
         for (var element : infix) {
-            final var isOperand = !element.matches("[-+/*()]");
+            final var isOperand = !element.matches("[-+/*^()]");
 
             if (isOperand) {
                 postfix.add(element);
@@ -122,11 +115,9 @@ public class PostfixCalculator implements Calculator {
                 continue;
             }
 
-
             // If the incoming operator has higher precedence than the top of the stack,
             // push it on the stack.
-
-            if (element.matches("[*/]") && stack.peek().matches("[-+]")) {
+            if (getOperation(element).getPriority() > getOperation(stack.peek()).getPriority()) {
                 stack.push(element);
                 continue;
             }
@@ -137,10 +128,8 @@ public class PostfixCalculator implements Calculator {
 			   on the top of the stack; then add the incoming operator to the stack.
 			 */
 
-            while (!stack.isEmpty()
-                    && !stack.peek().equals(LEFT_PARENTHESIS)
-                    && stack.peek().matches("[-+*/]")
-                    && element.matches("[-+]")) {
+            while (!stack.isEmpty() && !stack.peek().equals(LEFT_PARENTHESIS)
+                    && getOperation(element).getPriority() <= getOperation(stack.peek()).getPriority()) {
                 postfix.add(stack.pop());
             }
 

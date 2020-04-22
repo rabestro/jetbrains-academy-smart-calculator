@@ -1,4 +1,4 @@
-package calculator;
+package calculator.validation;
 
 import java.util.regex.Pattern;
 
@@ -6,8 +6,8 @@ import static java.util.regex.Pattern.compile;
 
 public interface Validation {
     Pattern IDENTIFIER = compile("\\p{Alpha}+");
-    Pattern EXPRESSION = compile("[-+ ]*\\(*\\w+( *([/*]|[-+]+) *\\(*\\w+\\)*)*");
-    Pattern ASSIGNMENT = compile("\\p{Alpha}+\\s*=[-+ ]*\\(*\\w+( *([/*]|[-+]+) *\\(*\\w+\\)*)*");
+    Pattern EXPRESSION = compile("[-+ ]*\\(*\\w+( *([/*^]|[-+]+) *\\(*\\w+\\)*)*");
+    Pattern ASSIGNMENT = compile("\\p{Alpha}+\\s*=[-+ ]*\\(*\\w+( *([/*^]|[-+]+) *\\(*\\w+\\)*)*");
 
     String ERR_INVALID_EXPRESSION = "Invalid expression";
     String ERR_INVALID_ASSIGNMENT = "Invalid assignment";
