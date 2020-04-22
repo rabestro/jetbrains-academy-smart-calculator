@@ -6,6 +6,85 @@ Calculators are a very helpful tool that we all use on a regular basis. Why not 
 ## Learning outcomes
 Apart from writing a useful program (everyone uses calculators!), you will learn a lot about arrays, stacks, strings, and queues. You will also get closer experience with 2 important data structures: the stack and the queue. You will also get a closer experience with BigInteger class that allows storing large volumes of data with precision for geo-data or physical quantities.
 
+### Work on project. Stage 6/8: Variables
+
+At this stage, your program should support variables. We suppose that the name of a variable (identifier) can contain only Latin letters. The case is also important; for example, **n** is not the same as **N**. The value can be an integer number or a value of another variable.
+
+Use Map to support variables.
+
+The assignment statement may look like the following:
+
+```
+n = 3
+m=4
+a  =   5
+b = a
+v=   7
+n =9
+```
+A variable can have a name consisting of more than one letter.
+```
+count = 10
+```
+To print the value of a variable you should just type its name.
+```
+N = 5
+N
+5
+```
+It should be possible to set a new value to an existing variable.
+```
+a = 1
+a = 2
+a = 3
+a
+3
+```
+If an identifier or value of a variable is invalid, the program must print a message like the one below.
+```
+a1 = 8
+Invalid identifier
+n = a2a
+Invalid assignment
+a = 7 = 8
+Invalid assignment
+```
+If a variable is not declared yet, the program should print *"Unknown variable"*.
+```
+a = 8
+b = c
+Unknown variable
+e
+Unknown variable
+```
+Handle as many incorrect inputs as possible. The program must never throw the *NumberFormatException* or any other exception.
+
+It is important to note, all variables must store their values between calculations of different expressions.
+
+#### Input/Output example
+
+```
+a  =  3
+b= 4
+c =5
+a + b - c
+2
+b - c + 4 - a
+0
+a = 800
+a + b + c
+809
+BIG = 9000
+BIG
+9000
+big
+Unknown variable
+/exit
+Bye!
+```
+The program should not stop until the user enters the **/exit** command.
+
+
 ### Work on project. Stage 7/8: I’ve got the power 
 
 At this stage, your program should support for multiplication *, integer division / and parentheses (...). They have a higher priority than addition + and subtraction -. Do not forget about variables; they, and the unary minus operator, should still work. Modify the result of the /help command to explain all possible operators.
