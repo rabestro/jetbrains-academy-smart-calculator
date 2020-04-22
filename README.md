@@ -6,6 +6,38 @@ Calculators are a very helpful tool that we all use on a regular basis. Why not 
 ## Learning outcomes
 Apart from writing a useful program (everyone uses calculators!), you will learn a lot about arrays, stacks, strings, and queues. You will also get closer experience with 2 important data structures: the stack and the queue. You will also get a closer experience with BigInteger class that allows storing large volumes of data with precision for geo-data or physical quantities.
 
+### Work on project. Stage 5/8: Error! 
+
+Modify your program to handle different cases when the given expression has an invalid format. The program should print *"Invalid expression"* in such cases. The program must never throw the _NumberFormatException_ or any other exception.
+
+If a user enters an invalid command, the program must print _"Unknown command"_.
+
+All messages must be printed without quotes.
+
+Do not forget to write methods to decompose your program.
+```
+8 + 7 - 4
+11
+abc
+Invalid expression
+123+
+Invalid expression
++15
+15
+18 22
+Invalid expression
+ 
+-22
+-22
+22-
+Invalid expression
+/go
+Unknown command
+/exit
+Bye!
+```
+The program should not stop until the user enters the **/exit** command (like before).
+
 ### Work on project. Stage 6/8: Variables
 
 At this stage, your program should support variables. We suppose that the name of a variable (identifier) can contain only Latin letters. The case is also important; for example, **n** is not the same as **N**. The value can be an integer number or a value of another variable.
@@ -87,7 +119,7 @@ The program should not stop until the user enters the **/exit** command.
 
 ### Work on project. Stage 7/8: I’ve got the power 
 
-At this stage, your program should support for multiplication *, integer division / and parentheses (...). They have a higher priority than addition + and subtraction -. Do not forget about variables; they, and the unary minus operator, should still work. Modify the result of the /help command to explain all possible operators.
+At this stage, your program should support for multiplication \*, integer division / and parentheses (...). They have a higher priority than addition + and subtraction -. Do not forget about variables; they, and the unary minus operator, should still work. Modify the result of the **/help** command to explain all possible operators.
 
 Here is an example of an expression that contains all possible operations:
 ```
