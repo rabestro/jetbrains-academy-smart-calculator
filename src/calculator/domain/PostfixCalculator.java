@@ -115,18 +115,10 @@ public class PostfixCalculator implements Calculator {
                 continue;
             }
 
-            // If the incoming operator has higher precedence than the top of the stack,
-            // push it on the stack.
             if (getOperation(element).getPriority() > getOperation(stack.peek()).getPriority()) {
                 stack.push(element);
                 continue;
             }
-
-			/* If the incoming operator has lower or equal precedence than the top of
-			   the operator stack, pop the stack and add operators to the result until
-			   you see an operator that has a smaller precedence or a left parenthesis
-			   on the top of the stack; then add the incoming operator to the stack.
-			 */
 
             while (!stack.isEmpty() && !stack.peek().equals(LEFT_PARENTHESIS)
                     && getOperation(element).getPriority() <= getOperation(stack.peek()).getPriority()) {
